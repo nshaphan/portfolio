@@ -5,16 +5,38 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import styled from "@emotion/styled"
+import tw from "tailwind.macro"
 
-const BlogIndex = ({ data, location }) => {
+interface Props {
+  data: {
+    allMarkdownRemark: any,
+    site: {
+      siteMetadata: {
+        title: string,
+      }
+    },
+  }
+  location: Location,
+}
+const BlogIndex = ({ data, location }: Props) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+
+  const Button = styled.button`${tw`
+  bg-gray-200 
+  hover:bg-blue-500
+  text-pink-500
+  p-2 rounded
+  `
+}`;
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map(({ node }) => {
+      <Button><h1>hello</h1></Button>
+      {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -31,12 +53,15 @@ const BlogIndex = ({ data, location }) => {
               <small>{node.frontmatter.date}</small>
             </header>
             <section>
+            
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}
+                
               />
             </section>
+            
           </article>
         )
       })}

@@ -12,6 +12,9 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-postcss`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const result = await graphql(
     `
       {
@@ -62,3 +62,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.onCreateWebpackConfig = ({actions, getConfig}) => {
+  // Hack due to Tailwind ^1.1.0 using `reduce-css-calc` which assumes node
+  // https://github.com/bradlc/babel-plugin-tailwind-components/issues/39#issuecomment-526892633
+  const config = getConfig();
+  config.node = {
+      fs: 'empty'
+  };
+};
