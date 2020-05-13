@@ -1,43 +1,50 @@
-import React from "react"
-import { Link } from "gatsby"
-import tw from "tailwind.macro"
+import React from 'react';
 
-import { rhythm, scale } from "../utils/typography"
-import styled from "@emotion/styled"
-import { NavContainer } from "./../utils/styles/blogStyles"
+import styled from '@emotion/styled';
+import tw from 'tailwind.macro';
+import { Link } from 'gatsby';
+import { rhythm } from '../utils/typography';
+import { NavContainer } from '../utils/styles/blogStyles';
+
 interface Props {
-  location: Location,
-  title: string,
-  children?: any
+  location: Location;
+  title: string;
+  children?: {};
 }
+const PageWrapper = styled.div`
+  ${tw`
+     font-sans
+     bg-gray-100
+    `};
+`;
 
-const Layout = ({ location, title, children }: Props) => {
-  let header
- 
-    header = (
-      <NavContainer>
-        <div>Hello</div>
-        <div>World</div>
-      </NavContainer>
-    )
+const Footer = styled.footer`
+  ${tw`
+    bg-purple-900
+    p-4
+  `}
+`;
+const Layout = ({ children }: Props) => {
+  const header = (
+    <NavContainer>
+      <div className="blog__owner">
+        <Link to="/blog">{`<Blog by Shaphan />`}</Link>
+      </div>
+      <div className="blog__menu">
+        <Link to="/">About Me</Link>
+      </div>
+    </NavContainer>
+  );
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
+    <PageWrapper>
       <header>{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
+      <Footer>
+        <span>{`© ${new Date().getFullYear()} , Built with`}</span>
         <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
-  )
-}
+      </Footer>
+    </PageWrapper>
+  );
+};
 
-export default Layout
+export default Layout;
