@@ -14,7 +14,6 @@ interface Props {
 const PageWrapper = styled.div`
   ${tw`
      font-sans
-     bg-gray-100
     `};
 `;
 
@@ -27,17 +26,27 @@ const Footer = styled.footer`
 const Layout = ({ children }: Props) => {
   const header = (
     <NavContainer>
-      <div className="blog__owner">
-        <Link to="/blog">{`<Blog by Shaphan />`}</Link>
+      <div>
+        <div className="flex items-center justify-start">
+          <div className="brand">SN</div>
+          <div className="font-bold text-2xl ml-2 text-gray-700">
+            ShaNcreates
+          </div>
+        </div>
       </div>
+
       <div className="blog__menu">
-        <Link to="/">About Me</Link>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          About Me
+        </Link>
+        <Link to="/">Articles</Link>
+        <Link to="/">Contact</Link>
       </div>
     </NavContainer>
   );
   return (
     <PageWrapper>
-      <header>{header}</header>
+      <header className="border-gray-900">{header}</header>
       <main>{children}</main>
       <Footer>
         <span>{`© ${new Date().getFullYear()} , Built with`}</span>

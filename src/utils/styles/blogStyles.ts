@@ -4,38 +4,51 @@ import { rhythm } from '../typography';
 
 export const Container = styled.div`
   ${tw`
-        mx-auto 
-        px-6 py-2 
-        bg-purple-900
-    `}
+    mx-auto 
+    px-6 py-2
+  `}
 `;
 
 export const NavContainer = styled(Container)`
   ${tw`
-        flex justify-between items-center
-    `}
-  .blog__owner {
+    flex justify-start items-center
+  `}
+  .brand {
     ${tw`
       bg-gray-300
-      p-1
+      text-2xl 
+      rounded-full 
+      h-16 w-16
+      flex items-center justify-center
+      font-bold
+      text-gray-700
     `}
     a {
       ${tw`
-          no-underline
-        `}
+        no-underline
+      `}
     }
   }
   .blog__menu {
     ${tw`
-      text-white
+      pl-4
+      text-gray-700
+      border-transparent
     `}
+    a {
+      ${tw`
+        pl-8
+        font-bold
+      `}
+      box-shadow: none
+    }
   }
 `;
 
 export const brand = styled.a`
   ${tw`
     bg-blue-300
-    `}
+  `}
 `;
 
 export const Content = styled.div`
@@ -57,5 +70,6 @@ export const Article = styled.article`
     p-4
     rounded-md
     border-gray-900
+    text-xl
   `}
 `;
