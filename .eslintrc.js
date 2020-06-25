@@ -6,11 +6,17 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
-        'airbnb'
+        'airbnb',
+        'prettier'
     ],
     settings: {
         react: {
             version: 'detect'
+        },
+        "import/resolver": {
+            node: {
+                extensions: [".js", ".jsx", ".ts", ".tsx"]
+            }
         }
     },
     env: {
@@ -18,7 +24,7 @@ module.exports = {
         node: true,
         es6: true
     },
-    plugins: ['@typescript-eslint', 'react'],
+    plugins: ['@typescript-eslint', 'react', 'prettier'],
     parserOptions: {
         ecmaFeatures: {
             jsx: true
@@ -28,7 +34,19 @@ module.exports = {
     },
     rules: {
         'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
-        '@typescript-eslint/explicit-function-return-type': 'off'
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        "prettier/prettier": ["error"],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ]
     },
     overrides: [
         // Override some typescript rules just for .js files

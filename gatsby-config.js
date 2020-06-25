@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 module.exports = {
   siteMetadata: {
     title: `The Blog of Shaphan Nzabonimana`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Shaphan`,
+      summary: `lives and works in Kigali, likes Open Source software and exploring new ways of building amazing things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `A personal site and blog by Shaphan Nzabonimana, I share knowledge I have gained in over 3+ years as a software developer.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `shaphan_n`,
     },
   },
   plugins: [
@@ -56,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
     `gatsby-plugin-feed`,
@@ -83,4 +85,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

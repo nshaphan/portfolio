@@ -1,46 +1,59 @@
-import React from "react"
-import { Link } from "gatsby"
-import tw from "tailwind.macro"
+import React from 'react';
 
-import { rhythm, scale } from "../utils/typography"
-import styled from "@emotion/styled"
+import styled from '@emotion/styled';
+import tw from 'tailwind.macro';
+import { Link } from 'gatsby';
+import { rhythm } from '../utils/typography';
+import { NavContainer } from '../utils/styles/blogStyles';
 
 interface Props {
-  location: Location,
-  title: string,
-  children?: any
+  location: Location;
+  title: string;
+  children?: {};
 }
+const PageWrapper = styled.div`
+  ${tw`
+     font-sans
+    `};
+`;
 
-const Layout = ({ location, title, children }: Props) => {
-  let header
-  const Navbar = styled.div`
-    ${tw `
-      bg-gray-200
-    `}
-  `
-    header = (
-      <Navbar>
-        Hello World
-      </Navbar>
-    )
+const Footer = styled.footer`
+  ${tw`
+    bg-purple-900
+    p-4
+  `}
+`;
+const Layout = ({ children }: Props) => {
+  const header = (
+    <NavContainer>
+      <div>
+        <div className="flex items-center justify-start">
+          <div className="brand">SN</div>
+          <div className="font-bold text-2xl ml-2 text-gray-700">
+            ShaNcreates
+          </div>
+        </div>
+      </div>
+
+      <div className="blog__menu">
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          About Me
+        </Link>
+        <Link to="/">Articles</Link>
+        <Link to="/">Contact</Link>
+      </div>
+    </NavContainer>
+  );
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
+    <PageWrapper>
+      <header className="border-gray-900">{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
+      <Footer>
+        <span>{`© ${new Date().getFullYear()} , Built with`}</span>
         <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
-  )
-}
+      </Footer>
+    </PageWrapper>
+  );
+};
 
-export default Layout
+export default Layout;
